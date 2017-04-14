@@ -25,9 +25,19 @@ typedef struct linkedlist
 linkedlist_t* newlinkedlist();
 
 /*
+ * frees a given linked list from memory
+ */
+void freeLinkedList(linkedlist_t* ll);
+
+/*
  * initializes a new node with a value
  */
 node_t* newNode(int value);
+
+/*
+ * frees a given node from memory
+ */
+void freeNode(node_t* node);
 
 /*
  * inserts a node at the given position, moving the

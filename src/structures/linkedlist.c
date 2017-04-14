@@ -12,6 +12,23 @@ linkedlist_t* newlinkedlist()
 }
 
 /*
+ * frees a given linked list from memory
+ */
+void freeLinkedList(linkedlist_t* ll)
+{
+	node_t* current = (*ll).head;
+	node_t* next;
+	while(current != NULL)
+	{
+		next = (*current).next;
+		freeNode(current);
+		current = next;
+	}
+
+	free(ll);
+}
+
+/*
  * initializes a new node with a value
  */
 node_t* newNode(int value)
@@ -22,6 +39,14 @@ node_t* newNode(int value)
 	(*n).next = NULL;
 
 	return n;
+}
+
+/*
+ * frees a given node from memory
+ */
+void freeNode(node_t* node)
+{
+	free(node);
 }
 
 void insert(linkedlist_t* ll, int position, int value)
@@ -64,12 +89,16 @@ void deleteNode(linkedlist_t* ll, int position)
 		return;
 	}
 
+	node_t* current = (*ll).head;
+
 	if(position == 0)
 	{
 		(*ll).head = (*((*ll).head)).next;
+		freeNode(current);
+
+		return;
 	}
 
-	node_t* current = (*ll).head;
 	node_t* prev;
 
 	int i;
@@ -87,6 +116,8 @@ void deleteNode(linkedlist_t* ll, int position)
 
 	node_t* newNextNode = (*current).next;
 	(*prev).next = newNextNode;
+
+	freeNode(current);
 }
 
 /*

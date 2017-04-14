@@ -3,6 +3,8 @@
 void dummytest()
 {
 	linkedlist_t* ll = newlinkedlist();
+	linkedlist_t* ll2 = newlinkedlist();
+	freeLinkedList(ll2);
 
 	deleteNode(ll, 0);
 
@@ -34,4 +36,6 @@ void dummytest()
 	deleteNode(ll, 0);
 
 	printAll(ll);
+
+	freeLinkedList(ll);
 }
