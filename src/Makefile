@@ -13,3 +13,9 @@ linkedlist.o: ./structures/linkedlist.c ./structures/linkedlist.h
 
 linkedlist_test.o: ./tests/linkedlist_test.c ./tests/linkedlist_test.h
 	$(CC) $(CFLAGS) -c ./tests/linkedlist_test.c -o linkedlist_test.o -g
+
+clean:
+	rm -f *.o
+
+cleanall: clean
+	rm -f ../bin/struct

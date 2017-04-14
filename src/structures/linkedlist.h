@@ -30,6 +30,12 @@ linkedlist_t* newlinkedlist();
 node_t* newNode(int value);
 
 /*
+ * inserts a node at the given position, moving the
+ * element origionally in that position to position + 1
+ */
+void insert(linkedlist_t* ll, int position, int value);
+
+/*
  * adds a node to the end of the linked list
  */
 void append(linkedlist_t* ll, int value);

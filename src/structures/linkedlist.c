@@ -23,6 +23,40 @@ node_t* newNode(int value)
 
 	return n;
 }
+
+void insert(linkedlist_t* ll, int position, int value)
+{
+	if((*ll).head == NULL)
+	{
+		append(ll, value);
+
+		return;
+	}
+
+	node_t* current = (*ll).head;
+	node_t* prev;
+
+	int i;
+
+	for(i = 0; i < position; i++)
+	{
+		prev = current;
+		current = (*current).next;
+		if(current == NULL)
+		{
+			append(ll, value);
+
+			return;
+		}
+	}
+
+	node_t* newNextNode = current;
+	node_t* insertNode = newNode(value);
+
+	(*insertNode).next = newNextNode;
+	(*prev).next = insertNode;
+}
+
 /*
  * adds a node to the end of the linked list
  */
