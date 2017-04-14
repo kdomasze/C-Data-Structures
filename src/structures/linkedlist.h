@@ -32,8 +32,23 @@ node_t* newNode(int value);
 /*
  * inserts a node at the given position, moving the
  * element origionally in that position to position + 1
+ *
+ * by default, the function will append the created node to
+ * theend of the linked list if the position exceeds the 
+ * length of the linked list (with an empty list defaulting
+ * with the insert as the first and only node)
  */
 void insert(linkedlist_t* ll, int position, int value);
+
+/*
+ * deletes a node at the given position, moving the element in
+ * position + 1 to position
+ *
+ * by default, if the position given is not valid for the list
+ * (i.e. exceeds the length of the list), the function will
+ * not modify the list
+ */
+void deleteNode(linkedlist_t* ll, int position);
 
 /*
  * adds a node to the end of the linked list

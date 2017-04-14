@@ -4,6 +4,8 @@ void dummytest()
 {
 	linkedlist_t* ll = newlinkedlist();
 
+	deleteNode(ll, 0);
+
 	insert(ll, 7, 55);
 
 	printAll(ll);
@@ -22,6 +24,14 @@ void dummytest()
 	printAll(ll);
 
 	insert(ll, 20, 111);
+
+	printAll(ll);
+
+	deleteNode(ll, 1);
+
+	printAll(ll);
+
+	deleteNode(ll, 0);
 
 	printAll(ll);
 }

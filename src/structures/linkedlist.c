@@ -57,6 +57,38 @@ void insert(linkedlist_t* ll, int position, int value)
 	(*prev).next = insertNode;
 }
 
+void deleteNode(linkedlist_t* ll, int position)
+{
+	if((*ll).head == NULL)
+	{
+		return;
+	}
+
+	if(position == 0)
+	{
+		(*ll).head = (*((*ll).head)).next;
+	}
+
+	node_t* current = (*ll).head;
+	node_t* prev;
+
+	int i;
+
+	for(i = 0; i < position; i++)
+	{
+		prev = current;
+		current = (*current).next;
+		
+		if(current == NULL)
+		{
+			return;
+		}
+	}
+
+	node_t* newNextNode = (*current).next;
+	(*prev).next = newNextNode;
+}
+
 /*
  * adds a node to the end of the linked list
  */
