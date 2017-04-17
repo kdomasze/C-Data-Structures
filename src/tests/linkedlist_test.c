@@ -24,6 +24,10 @@ void dummytest()
 
 	printAll(ll);
 
+	push(ll, 911);
+
+	printAll(ll);
+
 	insert(ll, 3, 10);
 
 	printAll(ll);

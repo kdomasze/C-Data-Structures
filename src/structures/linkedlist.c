@@ -123,9 +123,31 @@ void deleteNode(linkedlist* ll, int position)
 	freeNode(current);
 }
 
+void push(linkedlist* ll, int value)
+{
+	/*
+	 * if the linked list is empty, we can just add
+	 * a new node right away
+	 */
+	if((*ll).head == NULL)
+	{
+		(*ll).head = newNode(value);
+
+		return;
+	}
+	
+	/* 
+	 * otherwise, we just insert at the start
+	 */
+	node* nodeNew = newNode(value);
+	(*nodeNew).next = (*ll).head;
+	(*ll).head = nodeNew;
+}
+
 void append(linkedlist* ll, int value)
 {
-	/* if the linked list is empty, we can just add
+	/* 
+	 * if the linked list is empty, we can just add
 	 * a new node right away
 	 */
 	if((*ll).head == NULL)
@@ -135,7 +157,8 @@ void append(linkedlist* ll, int value)
 		return;
 	}
 
-	/* otherwise, we need to find the end of the list
+	/* 
+	 * otherwise, we need to find the end of the list
 	 * to append the node
 	 */
 	node* current = (*ll).head;

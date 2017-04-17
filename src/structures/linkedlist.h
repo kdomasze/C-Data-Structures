@@ -49,7 +49,7 @@ int length(linkedlist* ll);
  * element origionally in that position to position + 1
  *
  * by default, the function will append the created node to
- * theend of the linked list if the position exceeds the 
+ * the end of the linked list if the position exceeds the 
  * length of the linked list (with an empty list defaulting
  * with the insert as the first and only node)
  */
@@ -64,6 +64,11 @@ void insert(linkedlist* ll, int position, int value);
  * not modify the list
  */
 void deleteNode(linkedlist* ll, int position);
+
+/*
+ * adds a node to the beginning of the linked list
+ */
+void push(linkedlist* ll, int value);
 
 /*
  * adds a node to the end of the linked list
