@@ -37,6 +37,21 @@ void freeNode(node* node)
 	free(node);
 }
 
+int length(linkedlist* ll)
+{
+	int count = 0;
+
+	node* current = (*ll).head;
+	while(current != NULL)
+	{
+		count++;
+
+		current = (*current).next;
+	}
+
+	return count;
+}
+
 void insert(linkedlist* ll, int position, int value)
 {
 	if((*ll).head == NULL)
@@ -157,6 +172,7 @@ void printAll(linkedlist* ll)
 			current = (*current).next;
 		}
 	}
-	printf("empty\n");
+	printf("empty");
+	printf(" | \tCount: %d\n", length(ll));
 }
 

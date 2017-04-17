@@ -2,8 +2,11 @@
 
 void dummytest()
 {
-	linkedlist_t* ll = newlinkedlist();
-	linkedlist_t* ll2 = newlinkedlist();
+	linkedlist* ll = newlinkedlist();
+	linkedlist* ll2 = newlinkedlist();
+
+	printAll(ll2);
+
 	freeLinkedList(ll2);
 
 	deleteNode(ll, 0);

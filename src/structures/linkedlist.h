@@ -40,6 +40,11 @@ node* newNode(int value);
 void freeNode(node* node);
 
 /*
+ * returns the length of a linked list
+ */
+int length(linkedlist* ll);
+
+/*
  * inserts a node at the given position, moving the
  * element origionally in that position to position + 1
  *
