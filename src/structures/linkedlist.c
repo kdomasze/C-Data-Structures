@@ -178,6 +178,20 @@ int getData(node* n)
 	return (*n).data;
 }
 
+linkedlist* copy(linkedlist* ll)
+{
+	linkedlist* newll = newlinkedlist();
+
+	node* current = (*ll).head;
+	while(current != NULL)
+	{
+		append(newll, getData(current));
+		current = (*current).next;
+	}
+
+	return newll;
+}
+
 void printAll(linkedlist* ll)
 {
 	/* if the linked list is empty, we can just skip

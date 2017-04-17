@@ -44,5 +44,9 @@ void dummytest()
 
 	printAll(ll);
 
+	linkedlist* ll3 = copy(ll);
+
+	printAll(ll3);
+
 	freeLinkedList(ll);
 }

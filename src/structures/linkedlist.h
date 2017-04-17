@@ -81,6 +81,11 @@ void append(linkedlist* ll, int value);
 int getData(node* n);
 
 /*
+ * returns a copy of the linked list
+ */
+linkedlist* copy(linkedlist* ll);
+
+/*
  * prints entire linked list into console
  */
 void printAll(linkedlist* ll);
