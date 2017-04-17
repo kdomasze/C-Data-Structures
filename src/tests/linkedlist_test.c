@@ -2,51 +2,42 @@
 
 void dummytest()
 {
-	linkedlist* ll = newlinkedlist();
-	linkedlist* ll2 = newlinkedlist();
+	LinkedList* linked_list = kd_linked_list_new();
+	
+	LinkedList* linked_list_2 = kd_linked_list_new();
+	_kd_linked_list_print_all(linked_list_2);
+	kd_linked_list_free(linked_list_2);
 
-	printAll(ll2);
+	kd_linked_list_node_delete(linked_list, 0);
+	kd_linked_list_insert(linked_list, 7, 55);
+	_kd_linked_list_print_all(linked_list);
+	
+	kd_linked_list_append(linked_list, 1);
+	kd_linked_list_append(linked_list, 2);
+	kd_linked_list_append(linked_list, 3);
+	kd_linked_list_append(linked_list, 4);	
+	kd_linked_list_append(linked_list, 5);
+	kd_linked_list_append(linked_list, 6);
+	_kd_linked_list_print_all(linked_list);
 
-	freeLinkedList(ll2);
+	kd_linked_list_push(linked_list, 911);
+	_kd_linked_list_print_all(linked_list);
 
-	deleteNode(ll, 0);
+	kd_linked_list_insert(linked_list, 3, 10);
+	_kd_linked_list_print_all(linked_list);
 
-	insert(ll, 7, 55);
+	kd_linked_list_insert(linked_list, 20, 111);
+	_kd_linked_list_print_all(linked_list);
 
-	printAll(ll);
+	kd_linked_list_node_delete(linked_list, 1);
+	_kd_linked_list_print_all(linked_list);
 
-	append(ll, 1);
-	append(ll, 2);
-	append(ll, 3);
-	append(ll, 4);	
-	append(ll, 5);
-	append(ll, 6);
+	kd_linked_list_node_delete(linked_list, 0);
+	_kd_linked_list_print_all(linked_list);
 
-	printAll(ll);
+	LinkedList* linked_list_3 = kd_linked_list_copy(linked_list);
+	_kd_linked_list_print_all(linked_list_3);
+	kd_linked_list_free(linked_list_3);
 
-	push(ll, 911);
-
-	printAll(ll);
-
-	insert(ll, 3, 10);
-
-	printAll(ll);
-
-	insert(ll, 20, 111);
-
-	printAll(ll);
-
-	deleteNode(ll, 1);
-
-	printAll(ll);
-
-	deleteNode(ll, 0);
-
-	printAll(ll);
-
-	linkedlist* ll3 = copy(ll);
-
-	printAll(ll3);
-
-	freeLinkedList(ll);
+	kd_linked_list_free(linked_list);
 }

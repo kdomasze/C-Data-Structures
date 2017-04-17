@@ -1,30 +1,31 @@
 #include "linkedlist.h"
 
-linkedlist* newlinkedlist()
+LinkedList* kd_linked_list_new()
 {
-	linkedlist* ll = malloc(sizeof(linkedlist));
-	(*ll).head = NULL;
+	LinkedList* linked_list = malloc(sizeof(LinkedList));
+	(*linked_list).head = NULL;
 
-	return ll;
+	return linked_list;
 }
 
-void freeLinkedList(linkedlist* ll)
+void kd_linked_list_free(LinkedList* linked_list)
 {
-	node* current = (*ll).head;
-	node* next;
+	Node* current = (*linked_list).head;
+	Node* next;
+	
 	while(current != NULL)
 	{
 		next = (*current).next;
-		freeNode(current);
+		kd_linked_list_node_free(current);
 		current = next;
 	}
 
-	free(ll);
+	free(linked_list);
 }
 
-node* newNode(int value)
+Node* kd_linked_list_node_new(int value)
 {
-	node* n = malloc(sizeof(node));
+	Node* n = malloc(sizeof(Node));
 
 	(*n).data = value;
 	(*n).next = NULL;
@@ -32,16 +33,16 @@ node* newNode(int value)
 	return n;
 }
 
-void freeNode(node* node)
+void kd_linked_list_node_free(Node* node)
 {
 	free(node);
 }
 
-int length(linkedlist* ll)
+int kd_linked_list_length(LinkedList* linked_list)
 {
 	int count = 0;
 
-	node* current = (*ll).head;
+	Node* current = (*linked_list).head;
 	while(current != NULL)
 	{
 		count++;
@@ -52,17 +53,17 @@ int length(linkedlist* ll)
 	return count;
 }
 
-void insert(linkedlist* ll, int position, int value)
+void kd_linked_list_insert(LinkedList* linked_list, int position, int value)
 {
-	if((*ll).head == NULL)
+	if((*linked_list).head == NULL)
 	{
-		append(ll, value);
+		kd_linked_list_append(linked_list, value);
 
 		return;
 	}
 
-	node* current = (*ll).head;
-	node* prev;
+	Node* current = (*linked_list).head;
+	Node* prev;
 
 	int i;
 
@@ -72,37 +73,37 @@ void insert(linkedlist* ll, int position, int value)
 		current = (*current).next;
 		if(current == NULL)
 		{
-			append(ll, value);
+			kd_linked_list_append(linked_list, value);
 
 			return;
 		}
 	}
 
-	node* newNextNode = current;
-	node* insertNode = newNode(value);
+	Node* new_next_node = current;
+	Node* insert_node = kd_linked_list_node_new(value);
 
-	(*insertNode).next = newNextNode;
-	(*prev).next = insertNode;
+	(*insert_node).next = new_next_node;
+	(*prev).next = insert_node;
 }
 
-void deleteNode(linkedlist* ll, int position)
+void kd_linked_list_node_delete(LinkedList* linked_list, int position)
 {
-	if((*ll).head == NULL)
+	if((*linked_list).head == NULL)
 	{
 		return;
 	}
 
-	node* current = (*ll).head;
+	Node* current = (*linked_list).head;
 
 	if(position == 0)
 	{
-		(*ll).head = (*((*ll).head)).next;
-		freeNode(current);
+		(*linked_list).head = (*((*linked_list).head)).next;
+		kd_linked_list_node_free(current);
 
 		return;
 	}
 
-	node* prev;
+	Node* prev;
 
 	int i;
 
@@ -117,21 +118,21 @@ void deleteNode(linkedlist* ll, int position)
 		}
 	}
 
-	node* newNextNode = (*current).next;
-	(*prev).next = newNextNode;
+	Node* node_new = (*current).next;
+	(*prev).next = node_new;
 
-	freeNode(current);
+	kd_linked_list_node_free(current);
 }
 
-void push(linkedlist* ll, int value)
+void kd_linked_list_push(LinkedList* linked_list, int value)
 {
 	/*
 	 * if the linked list is empty, we can just add
 	 * a new node right away
 	 */
-	if((*ll).head == NULL)
+	if((*linked_list).head == NULL)
 	{
-		(*ll).head = newNode(value);
+		(*linked_list).head = kd_linked_list_node_new(value);
 
 		return;
 	}
@@ -139,77 +140,77 @@ void push(linkedlist* ll, int value)
 	/* 
 	 * otherwise, we just insert at the start
 	 */
-	node* nodeNew = newNode(value);
-	(*nodeNew).next = (*ll).head;
-	(*ll).head = nodeNew;
+	Node* node_new = kd_linked_list_node_new(value);
+	(*node_new).next = (*linked_list).head;
+	(*linked_list).head = node_new;
 }
 
-void append(linkedlist* ll, int value)
+void kd_linked_list_append(LinkedList* linked_list, int value)
 {
 	/* 
 	 * if the linked list is empty, we can just add
 	 * a new node right away
 	 */
-	if((*ll).head == NULL)
+	if((*linked_list).head == NULL)
 	{
-		(*ll).head = newNode(value);
+		(*linked_list).head = kd_linked_list_node_new(value);
 
 		return;
 	}
 
 	/* 
 	 * otherwise, we need to find the end of the list
-	 * to append the node
+	 * to kd_linked_list_append the node
 	 */
-	node* current = (*ll).head;
+	Node* current = (*linked_list).head;
 	while((*current).next != NULL)
 	{
 		current = (*current).next;
 	}
 
-	node* retNode = NULL; 
-	retNode = newNode(value);
-	(*current).next = retNode;
+	Node* node_new = NULL; 
+	node_new = kd_linked_list_node_new(value);
+	(*current).next = node_new;
 }
 
 
-int getData(node* n)
+int kd_linked_list_get(Node* node)
 {
-	return (*n).data;
+	return (*node).data;
 }
 
-linkedlist* copy(linkedlist* ll)
+LinkedList* kd_linked_list_copy(LinkedList* linked_list)
 {
-	linkedlist* newll = newlinkedlist();
+	LinkedList* linked_list_new = kd_linked_list_new();
 
-	node* current = (*ll).head;
+	Node* current = (*linked_list).head;
 	while(current != NULL)
 	{
-		append(newll, getData(current));
+		kd_linked_list_append(linked_list_new, kd_linked_list_get(current));
 		current = (*current).next;
 	}
 
-	return newll;
+	return linked_list_new;
 }
 
-void printAll(linkedlist* ll)
+void _kd_linked_list_print_all(LinkedList* linked_list)
 {
 	/* if the linked list is empty, we can just skip
 	 * to the end
 	 */
-	if((*ll).head != NULL)
+	if((*linked_list).head != NULL)
 	{
-		/* loop through all of the nodes in the
+		/* loop through a linked list of the nodes in the
 		 * linked list and prints them
 		 */
-		node* current = (*ll).head;
+		Node* current = (*linked_list).head;
 		while(current != NULL)
 		{
-			printf("%d -> ", getData(current));
+			printf("%d -> ", kd_linked_list_get(current));
 			current = (*current).next;
 		}
 	}
 	printf("empty");
-	printf(" | \tCount: %d\n", length(ll));
+	printf(" | \tCount: %d\n", kd_linked_list_length(linked_list));
 }
 

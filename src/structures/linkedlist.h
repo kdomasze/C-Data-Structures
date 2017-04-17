@@ -4,45 +4,45 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct node;
-struct linkedlist;
+struct Node_t;
+struct LinkedList_t;
 
-typedef struct node
+typedef struct Node_t
 {
 	int data;
-	struct node* next;
-} node;
+	struct Node_t* next;
+} Node;
 
-typedef struct linkedlist
+typedef struct LinkedList_t
 {
-	struct node* head;
-} linkedlist;
+	struct Node_t* head;
+} LinkedList;
 
 
 /*
  * initializes an empty linked list
  */
-linkedlist* newlinkedlist();
+LinkedList* kd_linked_list_new();
 
 /*
  * frees a given linked list from memory
  */
-void freeLinkedList(linkedlist* ll);
+void kd_linked_list_free(LinkedList* linked_list);
 
 /*
  * initializes a new node with a value
  */
-node* newNode(int value);
+Node* kd_linked_list_node_new(int value);
 
 /*
  * frees a given node from memory
  */
-void freeNode(node* node);
+void kd_linked_list_node_free(Node* node);
 
 /*
  * returns the length of a linked list
  */
-int length(linkedlist* ll);
+int kd_linked_list_length(LinkedList* linked_list);
 
 /*
  * inserts a node at the given position, moving the
@@ -53,7 +53,7 @@ int length(linkedlist* ll);
  * length of the linked list (with an empty list defaulting
  * with the insert as the first and only node)
  */
-void insert(linkedlist* ll, int position, int value);
+void kd_linked_list_insert(LinkedList* linked_list, int position, int value);
 
 /*
  * deletes a node at the given position, moving the element in
@@ -63,31 +63,31 @@ void insert(linkedlist* ll, int position, int value);
  * (i.e. exceeds the length of the list), the function will
  * not modify the list
  */
-void deleteNode(linkedlist* ll, int position);
+void kd_linked_list_node_delete(LinkedList* linked_list, int position);
 
 /*
  * adds a node to the beginning of the linked list
  */
-void push(linkedlist* ll, int value);
+void kd_linked_list_push(LinkedList* linked_list, int value);
 
 /*
  * adds a node to the end of the linked list
  */
-void append(linkedlist* ll, int value);
+void kd_linked_list_append(LinkedList* linked_list, int value);
 
 /*
  * returns the data stored in a node
  */
-int getData(node* n);
+int kd_linked_list_get(Node* n);
 
 /*
  * returns a copy of the linked list
  */
-linkedlist* copy(linkedlist* ll);
+LinkedList* kd_linked_list_copy(LinkedList* linked_list);
 
 /*
  * prints entire linked list into console
  */
-void printAll(linkedlist* ll);
+void _kd_linked_list_print_all(LinkedList* linked_list);
 
 #endif
