@@ -35,3 +35,6 @@ bin/
 
 # System files
 *~
+
+# Editor Files
+compile_commands.json

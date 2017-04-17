@@ -11,33 +11,33 @@ typedef struct node
 {
 	int data;
 	struct node* next;
-} node_t;
+} node;
 
 typedef struct linkedlist
 {
 	struct node* head;
-} linkedlist_t;
+} linkedlist;
 
 
 /*
  * initializes an empty linked list
  */
-linkedlist_t* newlinkedlist();
+linkedlist* newlinkedlist();
 
 /*
  * frees a given linked list from memory
  */
-void freeLinkedList(linkedlist_t* ll);
+void freeLinkedList(linkedlist* ll);
 
 /*
  * initializes a new node with a value
  */
-node_t* newNode(int value);
+node* newNode(int value);
 
 /*
  * frees a given node from memory
  */
-void freeNode(node_t* node);
+void freeNode(node* node);
 
 /*
  * inserts a node at the given position, moving the
@@ -48,7 +48,7 @@ void freeNode(node_t* node);
  * length of the linked list (with an empty list defaulting
  * with the insert as the first and only node)
  */
-void insert(linkedlist_t* ll, int position, int value);
+void insert(linkedlist* ll, int position, int value);
 
 /*
  * deletes a node at the given position, moving the element in
@@ -58,21 +58,21 @@ void insert(linkedlist_t* ll, int position, int value);
  * (i.e. exceeds the length of the list), the function will
  * not modify the list
  */
-void deleteNode(linkedlist_t* ll, int position);
+void deleteNode(linkedlist* ll, int position);
 
 /*
  * adds a node to the end of the linked list
  */
-void append(linkedlist_t* ll, int value);
+void append(linkedlist* ll, int value);
 
 /*
  * returns the data stored in a node
  */
-int getData(node_t* n);
+int getData(node* n);
 
 /*
  * prints entire linked list into console
  */
-void printAll(linkedlist_t* ll);
+void printAll(linkedlist* ll);
 
 #endif
