@@ -2,20 +2,27 @@ CC = gcc
 CFLAGS = -ansi -Wall
 LGLAGS = -Wall -lm
 
-all: main.o linkedlist.o linkedlist_test.o
-	$(CC) $(CFLAGS) main.o linkedlist.o linkedlist_test.o -o ../bin/structs -g
+OBJ_DIR = ../obj
+BIN_DIR = ../bin
+EXEC = structs
 
-main.o: main.c
-	$(CC) $(CFLAGS) -c main.c -o main.o -g
+all: $(OBJ_DIR)/main.o $(OBJ_DIR)/linkedlist.o $(OBJ_DIR)/linkedlist_test.o
+	$(CC) $(CFLAGS) $(OBJ_DIR)/main.o $(OBJ_DIR)/linkedlist.o $(OBJ_DIR)/linkedlist_test.o -o $(BIN_DIR)/$(EXEC) -g
 
-linkedlist.o: ./structures/linkedlist.c ./structures/linkedlist.h
-	$(CC) $(CFLAGS) -c ./structures/linkedlist.c -o linkedlist.o -g
+$(OBJ_DIR)/main.o: main.c
+	$(CC) $(CFLAGS) -c main.c -o $(OBJ_DIR)/main.o -g
 
-linkedlist_test.o: ./tests/linkedlist_test.c ./tests/linkedlist_test.h
-	$(CC) $(CFLAGS) -c ./tests/linkedlist_test.c -o linkedlist_test.o -g
+$(OBJ_DIR)/linkedlist.o: ./structures/linkedlist.c ./structures/linkedlist.h
+	$(CC) $(CFLAGS) -c ./structures/linkedlist.c -o $(OBJ_DIR)/linkedlist.o -g
+
+$(OBJ_DIR)/linkedlist_test.o: ./tests/linkedlist_test.c ./tests/linkedlist_test.h
+	$(CC) $(CFLAGS) -c ./tests/linkedlist_test.c -o $(OBJ_DIR)/linkedlist_test.o -g
 
 clean:
-	rm -f *.o
+	rm -f $(OBJ_DIR)/*.o
 
 cleanall: clean
-	rm -f ../bin/struct
+	rm -f $(BIN_DIR)/struct
+
+run: all
+	$(BIN_DIR)/$(EXEC)
