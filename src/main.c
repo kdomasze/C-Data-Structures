@@ -1,8 +1,8 @@
-#include "./tests/linkedlist_test.h"
+#include "./tests/map_test.h"
 
 int main()
 {
-	dummytest();
+	test_map();
 
 	return 0;
 }

@@ -6,8 +6,8 @@ OBJ_DIR = ../obj
 BIN_DIR = ../bin
 EXEC = structs
 
-all: $(OBJ_DIR)/main.o $(OBJ_DIR)/linkedlist.o $(OBJ_DIR)/linkedlist_test.o
-	$(CC) $(CFLAGS) $(OBJ_DIR)/main.o $(OBJ_DIR)/linkedlist.o $(OBJ_DIR)/linkedlist_test.o -o $(BIN_DIR)/$(EXEC) -g
+all: $(OBJ_DIR)/main.o $(OBJ_DIR)/linkedlist.o $(OBJ_DIR)/linkedlist_test.o $(OBJ_DIR)/map.o $(OBJ_DIR)/map_test.o
+	$(CC) $(CFLAGS) $(OBJ_DIR)/main.o $(OBJ_DIR)/linkedlist.o $(OBJ_DIR)/linkedlist_test.o $(OBJ_DIR)/map.o $(OBJ_DIR)/map_test.o -o $(BIN_DIR)/$(EXEC) -g -lm
 
 $(OBJ_DIR)/main.o: main.c
 	$(CC) $(CFLAGS) -c main.c -o $(OBJ_DIR)/main.o -g
@@ -17,6 +17,12 @@ $(OBJ_DIR)/linkedlist.o: ./structures/linkedlist.c ./structures/linkedlist.h
 
 $(OBJ_DIR)/linkedlist_test.o: ./tests/linkedlist_test.c ./tests/linkedlist_test.h
 	$(CC) $(CFLAGS) -c ./tests/linkedlist_test.c -o $(OBJ_DIR)/linkedlist_test.o -g
+
+$(OBJ_DIR)/map.o: ./structures/map.c ./structures/map.h
+	$(CC) $(CFLAGS) -c ./structures/map.c -o $(OBJ_DIR)/map.o -g
+
+$(OBJ_DIR)/map_test.o: ./tests/map_test.c ./tests/map_test.h
+	$(CC) $(CFLAGS) -c ./tests/map_test.c -o $(OBJ_DIR)/map_test.o -g
 
 clean:
 	rm -f $(OBJ_DIR)/*.o
