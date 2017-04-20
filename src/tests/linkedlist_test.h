@@ -3,6 +3,6 @@
 
 #include "../structures/linkedlist.h"
 
-void dummytest();
+void test_linked_list();
 
 #endif

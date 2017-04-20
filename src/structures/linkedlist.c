@@ -176,9 +176,21 @@ void kd_linked_list_append(LinkedList* linked_list, int value)
 }
 
 
-int kd_linked_list_get(Node* node)
+int _kd_linked_list_node_get(Node* node)
 {
 	return (*node).data;
+}
+
+int kd_linked_list_get(LinkedList* linked_list, int position)
+{
+	Node* current = (*linked_list).head;
+	int i;
+	for(i = 0; i < position; i++)
+	{
+		current = (*current).next;
+	}
+
+	return _kd_linked_list_node_get(current);
 }
 
 LinkedList* kd_linked_list_copy(LinkedList* linked_list)
@@ -188,31 +200,9 @@ LinkedList* kd_linked_list_copy(LinkedList* linked_list)
 	Node* current = (*linked_list).head;
 	while(current != NULL)
 	{
-		kd_linked_list_append(linked_list_new, kd_linked_list_get(current));
+		kd_linked_list_append(linked_list_new, _kd_linked_list_node_get(current));
 		current = (*current).next;
 	}
 
 	return linked_list_new;
 }
-
-void _kd_linked_list_print_all(LinkedList* linked_list)
-{
-	/* if the linked list is empty, we can just skip
-	 * to the end
-	 */
-	if((*linked_list).head != NULL)
-	{
-		/* loop through a linked list of the nodes in the
-		 * linked list and prints them
-		 */
-		Node* current = (*linked_list).head;
-		while(current != NULL)
-		{
-			printf("%d -> ", kd_linked_list_get(current));
-			current = (*current).next;
-		}
-	}
-	printf("empty");
-	printf(" | \tCount: %d\n", kd_linked_list_length(linked_list));
-}
-

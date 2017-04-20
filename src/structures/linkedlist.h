@@ -75,7 +75,13 @@ void kd_linked_list_append(LinkedList* linked_list, int value);
 /*
  * returns the data stored in a node
  */
-int kd_linked_list_get(Node* n);
+int _kd_linked_list_node_get(Node* node);
+
+/*
+ * returns the data stored in a node at a given position in
+ * the specified linked list
+ */
+int kd_linked_list_get(LinkedList* linked_list, int position);
 
 /*
  * returns a copy of the linked list
