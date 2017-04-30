@@ -1,18 +1,18 @@
 #ifndef LINKED_LIST_H
 #define LINKED_LIST_H
 
-struct Node_t;
+struct LL_Node_t;
 struct LinkedList_t;
 
-typedef struct Node_t
+typedef struct LL_Node_t
 {
 	int data;
-	struct Node_t* next;
-} Node;
+	struct LL_Node_t* next;
+} LL_Node;
 
 typedef struct LinkedList_t
 {
-	struct Node_t* head;
+	struct LL_Node_t* head;
 } LinkedList;
 
 
@@ -29,12 +29,12 @@ void kd_linked_list_free(LinkedList* linked_list);
 /*
  * initializes a new node with a value
  */
-Node* kd_linked_list_node_new(int value);
+LL_Node* kd_linked_list_node_new(int value);
 
 /*
  * frees a given node from memory
  */
-void kd_linked_list_node_free(Node* node);
+void kd_linked_list_node_free(LL_Node* node);
 
 /*
  * returns the length of a linked list
@@ -75,7 +75,7 @@ void kd_linked_list_append(LinkedList* linked_list, int value);
 /*
  * returns the data stored in a node
  */
-int _kd_linked_list_node_get(Node* node);
+int _kd_linked_list_node_get(LL_Node* node);
 
 /*
  * returns the data stored in a node at a given position in
