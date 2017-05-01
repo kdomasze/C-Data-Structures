@@ -22,5 +22,3 @@ int kd_stack_pop(Stack* stack)
 
 	return value;
 }
-
-
