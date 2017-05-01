@@ -6,8 +6,8 @@ OBJ_DIR = ../obj
 BIN_DIR = ../bin
 EXEC = structs
 
-all: $(OBJ_DIR)/main.o $(OBJ_DIR)/linkedlist.o $(OBJ_DIR)/linkedlist_test.o $(OBJ_DIR)/map.o $(OBJ_DIR)/map_test.o $(OBJ_DIR)/binarysearchtree.o $(OBJ_DIR)/binarysearchtree_test.o
-	$(CC) $(CFLAGS) $(OBJ_DIR)/main.o $(OBJ_DIR)/linkedlist.o $(OBJ_DIR)/linkedlist_test.o $(OBJ_DIR)/map.o $(OBJ_DIR)/map_test.o $(OBJ_DIR)/binarysearchtree.o $(OBJ_DIR)/binarysearchtree_test.o -o $(BIN_DIR)/$(EXEC) -g -lm
+all: $(OBJ_DIR)/main.o $(OBJ_DIR)/linkedlist.o $(OBJ_DIR)/linkedlist_test.o $(OBJ_DIR)/map.o $(OBJ_DIR)/map_test.o $(OBJ_DIR)/binarysearchtree.o $(OBJ_DIR)/binarysearchtree_test.o $(OBJ_DIR)/stack.o $(OBJ_DIR)/stack_test.o
+	$(CC) $(CFLAGS) $(OBJ_DIR)/main.o $(OBJ_DIR)/linkedlist.o $(OBJ_DIR)/linkedlist_test.o $(OBJ_DIR)/map.o $(OBJ_DIR)/map_test.o $(OBJ_DIR)/binarysearchtree.o $(OBJ_DIR)/binarysearchtree_test.o $(OBJ_DIR)/stack.o $(OBJ_DIR)/stack_test.o -o $(BIN_DIR)/$(EXEC) -g -lm
 
 $(OBJ_DIR)/main.o: main.c
 	$(CC) $(CFLAGS) -c main.c -o $(OBJ_DIR)/main.o -g
@@ -30,6 +30,11 @@ $(OBJ_DIR)/binarysearchtree.o: ./structures/binarysearchtree.c ./structures/bina
 $(OBJ_DIR)/binarysearchtree_test.o: ./tests/binarysearchtree_test.c ./tests/binarysearchtree_test.h
 	$(CC) $(CFLAGS) -c ./tests/binarysearchtree_test.c -o $(OBJ_DIR)/binarysearchtree_test.o -g
 
+$(OBJ_DIR)/stack.o: ./structures/stack.c ./structures/stack.h
+	$(CC) $(CFLAGS) -c ./structures/stack.c -o $(OBJ_DIR)/stack.o -g
+
+$(OBJ_DIR)/stack_test.o: ./tests/stack_test.c ./tests/stack_test.h
+	$(CC) $(CFLAGS) -c ./tests/stack_test.c -o $(OBJ_DIR)/stack_test.o -g
 
 clean:
 	rm -f $(OBJ_DIR)/*.o
